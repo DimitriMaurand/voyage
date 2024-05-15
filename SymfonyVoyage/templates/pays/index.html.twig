@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pays index{% endblock %}
+
+{% block body %}
+    <
+<h2 class="text-xl font-bold text-center m-4">Tableau de pays</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom_pays</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pay in pays %}
+            <tr>
+                <td>{{ pay.id }}</td>
+                <td>{{ pay.nomPays }}</td>
+                <td>
+                    <a href="{{ path('app_pays_show', {'id': pay.id}) }}"><button class="btn w-20 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-2 m-2 rounded-md">show</button></a>
+                    <a href="{{ path('app_pays_edit', {'id': pay.id}) }}"><button class="btn w-20 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-2 m-2 rounded-md">editer</button></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_pays_new') }}"><button  class="  w-auto bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md"> Créer un voyage</button></a>
+       <a href="{{ path('app_home') }}"><button  class="  w-auto bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md"> Retour</button></a>
+
+{% endblock %}

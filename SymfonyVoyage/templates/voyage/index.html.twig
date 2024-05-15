@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voyage index{% endblock %}
+
+{% block body %}
+    <h2 class="text-xl font-bold text-center m-4">Tableau de Voyage</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre_voyage</th>
+                <th>Description_voyage</th>
+                <th>Duree_voyage</th>
+                {# <th>Debut_voyage</th>
+                <th>Fin_voyage</th> #}
+                <th>Prix_voyage</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for voyage in voyages %}
+            <tr>
+                <td>{{ voyage.id }}</td>
+                <td>{{ voyage.titreVoyage }}</td>
+                <td>{{ voyage.DescriptionVoyage }}</td>
+                <td>{{ voyage.dureeVoyage }}</td>
+                {# <td>{{ voyage.debutVoyage ? voyage.debutVoyage|date('Y-m-d') : '' }}</td>
+                <td>{{ voyage.finVoyage ? voyage.finVoyage|date('Y-m-d') : '' }}</td> #}
+                <td>{{ voyage.prixVoyage }}</td>
+                <td>
+                    <a href="{{ path('app_voyage_show', {'id': voyage.id}) }}"><button class="btn w-20 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-2 m-2 rounded-md">show</button></a>
+                  
+                  <a href="{{ path('app_voyage_edit', {'id': voyage.id}) }}"><button class="btn w-20 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-2 m-2 rounded-md">editer</button></a>
+                  
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+   <a href="{{ path('app_voyage_new') }}"><button  class="  w-auto bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md"> Créer un voyage</button></a>
+   <a href="{{ path('app_home') }}"><button  class="  w-auto bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md"> Retour</button></a>
+{% endblock %}

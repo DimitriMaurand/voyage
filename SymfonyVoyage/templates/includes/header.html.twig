@@ -1,0 +1,18 @@
+<header class='bg-white'>
+            
+            <div class=' w-full bg-fff'>
+                <div class='h24 flex items-center '>
+                    <img class='w-24 h-24 ' src="/Travel.png" alt="" />
+                    <h1 class='w-full text-5xl text-sky-500 font-bold text-center'>Destination Pacifique</h1>
+                    {% if app.user %}
+    {# L'utilisateur est connecté, affichez le bouton de déconnexion #}
+                   <a href="{{ path('app_logout') }}"><button class="btn w-34 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 ml-2 rounded-md m-2">Déconnexion</button></a> 
+{% else %}
+    {# L'utilisateur n'est pas connecté, affichez le bouton de connexion #}
+    
+{% endif %}
+                </div>
+                
+               
+            </div>
+</header>
